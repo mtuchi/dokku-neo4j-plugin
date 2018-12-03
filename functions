@@ -7,13 +7,13 @@ ensure_docker_images() {
 
   if ! docker images | grep -e "^$NEO4J_PLUGIN_IMAGE_COMMUNITY " | grep -q "$PLUGIN_IMAGE_VERSION" ; then
     dokku_log_info1 "$NEO4J_PLUGIN_SERVICE Community v$PLUGIN_IMAGE_VERSION image not found. Building..."
-    docker build -q=true -t "$NEO4J_PLUGIN_IMAGE_COMMUNITY:$PLUGIN_IMAGE_VERSION" "$DOCKERFILES_FOLDER/$NEO4J_IMAGE_VERSION/Community" > /dev/null
+    docker build -q=true -t "$NEO4J_PLUGIN_IMAGE_COMMUNITY:$PLUGIN_IMAGE_VERSION" "$DOCKERFILES_FOLDER/$NEO4J_IMAGE_VERSION/community" > /dev/null
     dokku_log_info1 "Done."
   fi
 
   if ! docker images | grep -e "^$NEO4J_NEO4J_PLUGIN_IMAGE_VERSION " | grep -q "$PLUGIN_IMAGE_VERSION" ; then
     dokku_log_info1 "$NEO4J_PLUGIN_SERVICE Enterprise v$PLUGIN_IMAGE_VERSION image not found. Building..."
-    docker build -q=true -t "$NEO4J_NEO4J_PLUGIN_IMAGE_VERSION:$PLUGIN_IMAGE_VERSION" "$DOCKERFILES_FOLDER/$NEO4J_IMAGE_VERSION/Enterprise" > /dev/null
+    docker build -q=true -t "$NEO4J_NEO4J_PLUGIN_IMAGE_VERSION:$PLUGIN_IMAGE_VERSION" "$DOCKERFILES_FOLDER/$NEO4J_IMAGE_VERSION/enterprise" > /dev/null
     dokku_log_info1 "Done."
   fi
 }
